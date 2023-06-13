@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/navigationStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/footerStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/formStyle.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/accountMenuStyle.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/welcomePageStyle.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/credit_fraud_detection_app.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/checkout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/paymentOutcome.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/infoPageStyle.css" asp-append-version="true"/>
+</head>
+<body class="site-body">
+    <header>
+        <nav class="navbar">
+            <ul class="navbar-links">
+                <li>
+                    <a class="nav-link" asp-area="" asp-page="/Index">Naslovnica</a>
+                 </li>
+                 <li>
+                     <a class="nav-link" asp-area="" asp-page="/Checkout">Obrada transakcije</a>
+                 </li>
+                 <li>
+                     <a class="nav-link" asp-area="" asp-page="/InfoPage">Informacije</a>
+                 </li>
+            </ul>
+        </nav>
+          
+    </header>
+
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    
+    <footer>
+        <a href="https://www.ferit.unios.hr/2021/" id="ferit-link">&copy; 2023 - FERIT </a>
+        <nav class="bottom-menu">
+            <ul class="footer-links">
+                 <li>
+                    <a class="nav-link" asp-area="" asp-page="/Index">Naslovnica</a>
+                 </li>
+                 <li>
+                     <a class="nav-link" asp-area="" asp-page="/Checkout">Obrada transakcije</a>
+                 </li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/checkout.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

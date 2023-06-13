@@ -1,0 +1,134 @@
+﻿
+.all-screen {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    background-color: rgba(248, 248, 248, 0.9)
+}
+
+.welcome-image {
+    width: 620px;
+    height: 90vh;
+    padding: 25px 0px 0px 0px;
+    border-radius: 50px 0px 0px 0px;
+    background-color: rgb(240, 240, 240);
+    position: absolute;
+    right: -1px;
+    transition: 1.5s;
+}
+
+.welcome-image img {
+    width: 420px;
+    height: 420px;
+    transition: 1.2s;
+}
+
+.welcome-image img:hover {
+    width: 450px;
+    height: 450px;
+}
+
+.image-anchor {
+    
+}
+
+#welcome-message {
+    font-size: 18px;
+    font-family: Geneva;
+    text-align: left;
+    padding: 5px 25px;
+    background-color: rgb(216, 216, 216);
+    border-radius: 12px;
+    box-shadow: 8px -8px rgb(138, 138, 138);
+    margin-bottom: 30px;
+    width: 380px;
+    height: 192px;
+    z-index: 1;
+    color: rgb(103, 103, 103);
+    transition: 1.5s;
+    font-weight: 400;
+    
+}
+
+.welcome-container {
+    min-width: 500px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 25px;
+}
+
+#welcome-message:hover {
+    box-shadow: 4px -4px rgb(124, 124, 212);
+    
+}
+
+
+.all-screen h1 {
+    width: 480px;
+    margin-top: 15px;
+    margin-left: 29px;
+    text-align: left;
+    font-size: 58px;
+    font-weight: bold;
+    color: rgba(110, 110, 110, 0.8);
+    font-family: Verdana, sans-serif;
+    transition: 1.2s;
+}
+
+.all-screen h1:hover {
+   font-weight: 900;
+   color: rgb(235, 163, 9);
+}
+
+.all-screen button {
+    margin: 35px 0px 0px 0px;
+    background: rgba(138, 138, 138, 0.5);
+    border-radius: 5px;
+    padding: 12px 20px;
+    display: inline-block;
+    border: none;
+    width: 180px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+    .all-screen button:hover {
+        background: rgb(235, 163, 9, 0.7);
+    }
+
+.all-screen button span {
+     cursor: pointer;
+     display: inline-block;
+     position: relative;
+     transition: 0.5s;
+}
+
+.all-screen button span:after {
+     content: '\00bb';
+     position: absolute;
+     opacity: 0;
+     top: 0;
+     right: -20px;
+     transition: 0.5s;
+}
+
+.all-screen button:hover span {
+     padding-right: 25px;
+}
+
+
+.all-screen button:hover span:after {
+     opacity: 1;
+     right: 0;
+}
+
+
+@media screen and (max-width: 1160px) {
+    div.welcome-image {
+        display: none;
+    }
+}

@@ -1,0 +1,193 @@
+﻿@page
+@model credit_fraud_detection_app.Pages.CheckoutModel
+@{
+}
+
+<!--If isFraud is null it means that checkout model has not been runned-->
+@if(Model.isFraud is not null){
+	if (Model.isFraud == false)
+	{
+		<div class="payment-outcome">
+			<div>
+				<img id="successful-transaction-logo" src="images/successful_payment.svg"/>
+				<div class="payment-outcome-content">
+					<h2>Uspješna transakcija</h2>
+					<p>Čestitiamo @Model.name. Transakcija je uspiješno objavljena. Zahvaljujemo Vam se na kupnji.</p>
+				</div>
+			</div>
+			<div class="payment-outcome-form-container">
+				<form method="GET">
+					<button class="button-back">Obavni novu kupovinu</button>
+				</form>
+			</div>
+		</div>
+	}
+	else{
+		<div class="payment-outcome">
+			<div>
+				<img src="~/images/unsucessful_payment_icon.png"/>
+				<div class="payment-outcome-content">
+					<h2>Neuspijela transakcija</h2>
+					<p>Na žalost @Model.name nismo u stanju obraditi transakciju jer sumnjamo na prijevaru.</p>
+				</div>
+			</div>
+			<div class="payment-outcome-form-container">
+				<form method="GET">
+					<button class="button-back">Ponovno pokušaj</button>
+				</form>
+			</div>
+		</div>
+	}
+}else{
+    <div class="checkout-container">
+	<section id="checkout-one">
+	<div class="checkout-title-container">
+		<h1 class="checkout-title">Košarica</h1>
+	</div>
+	<div id="item-info-section">
+		<div class="item-image">
+			<img src="images/shop_item_placeholder.png"/>
+		</div>
+		<div id="item-info">
+			<div>
+				<h2>Artikal</h2>
+				<p>Ovaj proizvod predstavlja samo pokazni primjer i služi za jednostavni unos iznosa kupovine.</p>
+			</div>
+			<div id="price-amount-container">
+				<div id="price-section">
+					<img src="images/price_tag.png"/>
+					<p>Cijena: <span>1€</span></p>
+				</div>
+				<div id="amount-section">
+					<div>
+						<img src="images/shopping_bag.png"/>
+						<label for="repeat_retailer">Količina</label>
+					</div>
+						
+					<input id="purchase-value" type="number" name="purchase-value" value="1" min="0" step="0.01" placeholder="" oninput="changeItemAmount(this.value)" />
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<div class="total-price-container">
+		<div>
+			<img src="images/total_price_icon.png"/>
+			<h3>Ukupno  <span id="total-price">1€</span></h3>
+		</div>
+	</div>
+</section>
+
+<section id="checkout-two">
+	<div class="checkout-title-container" style="border-radius: 0px 0px 0px 0px;">
+		<h1 class="checkout-title">Unos podataka</h1>
+	</div>
+	<div id="form-section">
+		<form method="POST" id="checkout-form">
+		  <div id="name-surname-input-container">
+			  <div>
+				<label for="first-name-input">Ime</label>
+				<input id="first-name-input" name="first-name-input" type="text" placeholder="Ivan" oninput="SetInputBorderColor(this)"/>
+			  </div>
+			  <div>
+				<label for="last-name-input">Prezime</label>
+				<input id="last-name-input" name="last-name-input" type="text" placeholder="Ivić" oninput="SetInputBorderColor(this)"/>
+			  </div>
+          </div>
+		  <div id="payment-info-contianer">
+			  <div id="credit-card-contianer">
+				 <label for="card-number">Unesite broj kartice</label>
+				 <input id="card-number" name="card-number" oninput="SetInputBorderColor(this)" maxlength="19" placeholder="4242 4242 4242 4242" />
+			  </div>
+			  <div id="payment-mean-contianer">
+				<label for="payment-mean">Unesite prosječan iznos potrošnje (€)</label>
+				<input type="number" name="payment-mean" value="1" min="0" step="0.01" placeholder="Udaljenost od posljednje kupovine" />
+			  </div>
+		  </div>
+		  <label for="home-address">Mjesto stanovanja</label>
+		  <input type="text" id="home-address" name="home-address" placeholder="Osijek" oninput="SetInputBorderColor(this)"/>
+		  <label for="last-location-adress">Mjesto posljednje kupovine</label>
+		  <input type="text" id="last-location-adress" name="last-location-adress" placeholder="Osijek" oninput="SetInputBorderColor(this)"/>
+
+		  <div class="form-checkbox">
+			  <label for="terms">Ponovni sam korisnik ovo servisa</label>
+			  <input class="checkbox-input" type="checkbox" can-value='repaeat' can-true-value='1' an-false-value='0' name="repeat-retailer"/>
+		  </div>
+
+		  <input id="home-LatLng" name="home-LatLng" style="display: none;"/>
+		  <input id="last-location-LatLng" name="last-location-LatLng" style="display: none;" />
+		  <input id="current-LatLng" name="current-LatLng" style="display: none;" />
+		  <input id="purchase-value-form" name="purchase-value-form" value="1" style="display: none;" />
+		  <button id="click-post" style="display:none">Provjeri</button>
+		</form>
+		<div class="checkout-navigation-buttons">
+			   <button class="button-next" type="submit" onclick="checkFormInputs()">Provjeri</button>
+		  </div>
+	</div>
+</section>
+</div>
+}
+
+
+
+<!--Scripts-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUw6Erm34cL7UIQHQzabbivAXRMCUoUnU&libraries=places&callback=initMap">
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+	google.maps.event.addDomListener(window, "load", function () {
+	  var places = new google.maps.places.Autocomplete(
+		document.getElementById("home-address"));
+	  google.maps.event.addListener(places, "place_changed", function () {
+		var place = places.getPlace();
+		console.log(place)
+		var address = place.formatted_address;
+		var latitude = place.geometry.location.lat();
+		var longitude = place.geometry.location.lng();
+		var latlng = new google.maps.LatLng(latitude, longitude);
+        document.getElementById("home-LatLng").value = latlng;
+		
+	  });
+	});
+  </script>
+
+   <script>
+	google.maps.event.addDomListener(window, "load", function () {
+	  var places = new google.maps.places.Autocomplete(
+		document.getElementById("last-location-adress"));
+	  google.maps.event.addListener(places, "place_changed", function () {
+		var place = places.getPlace();
+		console.log(place)
+		var address = place.formatted_address;
+		var latitude = place.geometry.location.lat();
+		var longitude = place.geometry.location.lng();
+		var latlng = new google.maps.LatLng(latitude, longitude);
+        document.getElementById("last-location-LatLng").value = latlng;
+		
+	  });
+	});
+  </script>
+  
+  <script type="text/javascript">
+
+	$(function() {
+			navigator.geolocation.getCurrentPosition((position) => {
+				console.log(position.coords.latitude, position.coords.longitude)
+				document.getElementById("current-LatLng").value = `(${position.coords.latitude}, ${position.coords.longitude})`;
+			},
+				(err) => {
+			alert(err.message + "\nPlease enable location in your settings")
+		})
+	});
+   </script>
+
+
+   <script>
+	  const form = document.getElementById('checkout-form');
+	  form.addEventListener('keypress', function(e) {
+		if (e.keyCode === 13) {
+		  e.preventDefault();
+		}
+	  });
+	</script>
+

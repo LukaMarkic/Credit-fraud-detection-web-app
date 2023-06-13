@@ -1,0 +1,27 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Naslovnica";
+}
+
+
+<div class="all-screen">
+    <div class="welcome-container">
+        <h1>DOBRO DOŠLI</h1>
+        <div id="welcome-message">
+            <br/>
+            <p>Ova web aplikacija služi kao pokazni primjer rada modela
+                strojnog učenja za detekciju prijevara transakcije upotrebom
+                kreditne kartice.
+            </p>
+            <a asp-area="" asp-page="/InfoPage"><button><span>Više informacija</span></button></a>
+        
+        </div>
+    </div>
+
+    <div class = "welcome-image">
+       <a class="image-anchor" asp-area="" asp-page="/Checkout"><img src="images/welcome-image.png"/></a>
+    </div>
+</div>
+

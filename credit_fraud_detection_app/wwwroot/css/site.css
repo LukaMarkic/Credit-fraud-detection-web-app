@@ -1,0 +1,55 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+.site-body {
+    background: url("../61769.jpg") no-repeat;
+    object-fit: fill;
+    background-size: 3413px 1920px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+
+}
+
+
+
+body {
+    min-height: 100vh;
+    display: flex;
+    min-width: 600px;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#ferit-link{
+    text-decoration: none;
+    color: rgb(65, 65, 65);
+}

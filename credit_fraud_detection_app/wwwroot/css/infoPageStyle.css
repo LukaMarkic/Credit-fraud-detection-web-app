@@ -1,0 +1,60 @@
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+
+@font-face {
+    font-family: 'Konkhmer Sleokchherregular';
+    src: url('../fonts/konkhmersleokchher-regular-webfont.woff') format('woff2'), url('../fonts/konkhmersleokchher-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.info-page-container{
+    background-color: white;
+    padding: 35px 200px 0px 120px;
+    text-align: left;
+}
+
+.info-page-container h1 {
+    font-family: 'Konkhmer Sleokchherregular', Helvetica, sans-serif;
+    margin-bottom: 6px;
+    font-size: 1.6em;
+}
+
+.info-page-container p {
+   min-width: 1100px;
+   font-family: 'Poppins', sans-serif;
+   margin-top: 18px;
+   margin-bottom: 36px;
+   margin-left: 5px;
+}
+
+.info-page-container p a{
+    text-decoration: none;
+    color: rgb(85, 87, 88);
+    font-weight: 600;
+}
+
+.info-page-container p span{
+    font-weight: 600;
+}
+
+.info-page-container hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(111,111,111,1) 0%, rgba(226,225,225,1) 46%, rgba(254,254,254,1) 98%);
+}
+
+
+.info-page-img {
+    margin-left: 5px;
+    margin-bottom: 45px;
+    border: 1px solid #105b06;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 910px) {
+    .info-page-container {
+        padding: 35px 150px 0px 120px;
+    }
+}

@@ -1,0 +1,120 @@
+﻿
+
+/*Form*/
+#form-section{
+    padding:20px;
+}
+#form-section form > *{
+    margin-bottom: 20px;
+}
+
+.checkbox-input label{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-checkbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 10.67px;
+    flex: none;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.form-checkbox input {
+    box-sizing: border-box;
+    width: 18.5px;
+    height: 18.5px;
+    order: 1;
+}
+
+.form-checkbox label {
+    font-weight: 400;
+    font-size: 1.1em;
+    line-height: 150%;
+    color: #282938;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#name-surname-input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 32px;
+}
+
+#name-surname-input-container div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    order: 0;
+    flex-grow: 1;
+}
+
+#name-surname-input-container div label{
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+#name-surname-input-container div input{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+#payment-info-contianer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 32px;
+}
+
+#name-surname-input-container div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    order: 0;
+    flex-grow: 1;
+}
+
+#credit-card-contianer{
+    width: 60%;
+}
+
+#payment-mean-contianer {
+    align-self: stretch;
+}
+
+
+
+
+@media screen and (max-width: 810px) {
+
+    #payment-info-contianer {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    #credit-card-contianer {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+
+}

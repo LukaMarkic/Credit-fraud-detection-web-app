@@ -1,0 +1,48 @@
+﻿
+.payment-outcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    height: 100vh;
+}
+
+.payment-outcome img{
+
+    width: 330px;
+    height: 330px;
+}
+
+#successful-transaction-logo {
+    width: 261px;
+    height: 261px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+.payment-outcome div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.payment-outcome-form-container{
+    margin-bottom: 75px;
+}
+
+.payment-outcome-content p{
+    padding-top: 35px;
+}
+
+.button-back {
+    background: rgb(19, 147, 218);
+    border-radius: 5px;
+    padding: 16px 20px;
+    display: inline-block;
+    margin: 10px 0px;
+    border: none;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}

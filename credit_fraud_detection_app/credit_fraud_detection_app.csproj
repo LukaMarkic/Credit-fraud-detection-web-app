@@ -1,0 +1,68 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\Downloads\**" />
+    <Content Remove="wwwroot\Downloads\**" />
+    <EmbeddedResource Remove="wwwroot\Downloads\**" />
+    <None Remove="wwwroot\Downloads\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\FirebaseError.cs" />
+    <Compile Remove="Models\LogIn.cs" />
+    <Compile Remove="Models\Person.cs" />
+    <Compile Remove="Pages\AccountMenu.cshtml.cs" />
+    <Compile Remove="Pages\AccountPage.cshtml.cs" />
+    <Compile Remove="Pages\SignIn.cshtml.cs" />
+    <Compile Remove="Pages\SignUp.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Account.cshtml" />
+    <Content Remove="Pages\AccountMenu.cshtml" />
+    <Content Remove="Pages\AccountPage.cshtml" />
+    <Content Remove="Pages\SignIn.cshtml" />
+    <Content Remove="Pages\SignUp.cshtml" />
+    <Content Remove="wwwroot\account.png" />
+    <Content Remove="wwwroot\css\accountMenuStyle.css" />
+    <Content Remove="wwwroot\favicon.ico" />
+    <Content Remove="wwwroot\images\background.jpg" />
+    <Content Remove="wwwroot\sign_in_background.jpg" />
+    <Content Remove="wwwroot\welcome-image.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Pages\htmlpage.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Firebase.Auth" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Owin.Security" Version="4.2.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.12" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Net.Http.Formatting.Extension" Version="5.2.3" />
+    <PackageReference Include="System.Net.Http.Json" Version="7.0.0" />
+    <PackageReference Include="System.Net.WebHeaderCollection" Version="4.3.0" />
+    <PackageReference Include="System.Text.Json" Version="7.0.2" />
+    <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\background.jpg" />
+    <None Include="wwwroot\images\placeholder.png" />
+  </ItemGroup>
+
+</Project>

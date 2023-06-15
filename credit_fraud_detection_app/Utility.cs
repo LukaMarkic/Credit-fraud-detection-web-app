@@ -54,10 +54,10 @@ namespace credit_fraud_detection_app
                     {
                     }
                 };
-                const string apiKey = "HEdjZ3yh4276ARWN2qJwE9MLX6LTuclTrll8yC7C5PiuKWQR1HfEaB8uKUIjOvkmmb/gk7r1EyZs+AMC+tp7OQ=="; // Replace this with the API key for the web service
+                const string apiKey = "t4n8FH+Bg5+UQpzdUM0EMW8n0JdcSLJnDcWiVUjz5s1xJqeNpjh3zmAA681luk8dhUm78XrkEB+c+AMCJsAPvA=="; // Replace this with the API key for the web service
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 
-                client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/8f712c085ae242aabbf6d3880779f3a4/services/2310102391d04ec6a917d4876c78100a/execute?api-version=2.0&details=true");
+                client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/8f712c085ae242aabbf6d3880779f3a4/services/04090fea0d82410fa1b00ec5dad1e517/execute?api-version=2.0&details=true");
 
                 // WARNING: The 'await' statement below can result in a deadlock if you are calling this code from the UI thread of an ASP.Net application.
                 // One way to address this would be to call ConfigureAwait(false) so that the execution does not attempt to resume on the original context.

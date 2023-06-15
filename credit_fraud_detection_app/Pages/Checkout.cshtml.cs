@@ -30,7 +30,7 @@ namespace credit_fraud_detection_app.Pages
             float purchase;
             float purchaseRatio;
             string purchaseRatioStringRepresetantion;
-            string distandeFromHome;
+            string distanceFromHome;
             string distanceFromLastTransaction;
             Geolocation homeGeolocation = new Geolocation();
             Geolocation currentGeolocation = new Geolocation();
@@ -44,7 +44,7 @@ namespace credit_fraud_detection_app.Pages
             repeatRetailer = GetCheckBoxValue(Request.Form["repeat-retailer"]);
             purchase = GetFlaotValueOfInput(Request.Form["purchase-value-form"]);
             medianPurchase = GetFlaotValueOfInput(Request.Form["payment-mean"]);
-            distandeFromHome = currentGeolocation.CalculateDistanceFrom(homeGeolocation).ToString("0.0000", CultureInfo.InvariantCulture);
+            distanceFromHome = currentGeolocation.CalculateDistanceFrom(homeGeolocation).ToString("0.0000", CultureInfo.InvariantCulture);
             distanceFromLastTransaction = currentGeolocation.CalculateDistanceFrom(lastLocationGeolocation).ToString("0.0000", CultureInfo.InvariantCulture);
 
 
@@ -63,17 +63,17 @@ namespace credit_fraud_detection_app.Pages
             Console.WriteLine(Request.Form["last-location-LatLng"]);
             Console.WriteLine("Current " + Request.Form["current-LatLng"]);
             Console.WriteLine("Is checked: " + repeatRetailer);
-            Console.WriteLine("Distance from home: " + distandeFromHome + " mil");
+            Console.WriteLine("Distance from home: " + distanceFromHome + " mil");
             Console.WriteLine("Distance from last transaction: " + distanceFromLastTransaction + " mil");
 
-            TransactionInfo transaction = new TransactionInfo(distandeFromHome,distanceFromLastTransaction, purchaseRatioStringRepresetantion, repeatRetailer);
+            TransactionInfo transaction = new TransactionInfo(distanceFromHome,distanceFromLastTransaction, purchaseRatioStringRepresetantion, repeatRetailer);
 
             string? fraud = Utility.RunTransactionCheckTask(transaction);
 
-            SetFraudStauts(fraud);
+            SetFraudStatus(fraud);
         }
 
-        private void SetFraudStauts(string? fraud)
+        private void SetFraudStatus(string? fraud)
         {
             if (fraud == null)
             {

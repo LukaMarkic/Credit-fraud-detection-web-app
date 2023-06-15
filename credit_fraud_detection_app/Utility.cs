@@ -20,11 +20,18 @@ namespace credit_fraud_detection_app
     static public class Utility
     {
         private static string? isFraud;
+        private static string apiResponse = "";
 
         public static string? RunTransactionCheckTask(TransactionInfo transaction)
         {
             InvokeRequestResponseService(transaction).Wait();
             return isFraud;
+        }
+
+        public static string GetApiResponse(TransactionInfo transaction)
+        {
+            InvokeRequestResponseService(transaction).Wait();
+            return apiResponse;
         }
         static async Task InvokeRequestResponseService(TransactionInfo transaction)
         {
@@ -47,10 +54,10 @@ namespace credit_fraud_detection_app
                     {
                     }
                 };
-                const string apiKey = "fGteztDQNaz4ljzux3wjmmWz9EXdMdIPEKzYf7XzCrOtClD8I7ycBCX9pYvBftCrkg31LFre2dbM+AMChJ0m/w=="; // Replace this with the API key for the web service
+                const string apiKey = "HEdjZ3yh4276ARWN2qJwE9MLX6LTuclTrll8yC7C5PiuKWQR1HfEaB8uKUIjOvkmmb/gk7r1EyZs+AMC+tp7OQ=="; // Replace this with the API key for the web service
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 
-                client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/8f712c085ae242aabbf6d3880779f3a4/services/27f6a9125e564cc38dbc5e139630c829/execute?api-version=2.0&details=true");
+                client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/8f712c085ae242aabbf6d3880779f3a4/services/2310102391d04ec6a917d4876c78100a/execute?api-version=2.0&details=true");
 
                 // WARNING: The 'await' statement below can result in a deadlock if you are calling this code from the UI thread of an ASP.Net application.
                 // One way to address this would be to call ConfigureAwait(false) so that the execution does not attempt to resume on the original context.
@@ -66,9 +73,13 @@ namespace credit_fraud_detection_app
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine("Fraud: {0}", result);
+                    Console.WriteLine("Result: {0}", result);
                     string fraud = result.Substring(148, 1);
+                    string fraudProbability = result.Substring(152, (result.Length-7) - 152);
                     Console.WriteLine("Fraud: {0}", fraud);
+                    Console.WriteLine($"Probability: {fraudProbability}");
+                    apiResponse = "{\n \"fraud\": "+ fraud +",\n" +
+                        $" \"fraudProbability\": "+ fraudProbability + "\n}";
                     isFraud = fraud;
                 }
                 else

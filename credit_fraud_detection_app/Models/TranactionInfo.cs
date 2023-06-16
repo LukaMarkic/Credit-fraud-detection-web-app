@@ -23,8 +23,21 @@
             this.fraud = "0";
         }
 
-      
-      
+        public TransactionInfo(string distanceFromHome, string distanceFromLastTransaction, string ratioToMedianPurchasePrice, 
+                                string repeatRetailer, string usedChip, string usedPinNumber, string onlineOrder)
+        {
+            this.distanceFromHome = distanceFromHome;
+            this.distanceFromLastTransaction = distanceFromLastTransaction;
+            this.ratioToMedianPurchasePrice = ratioToMedianPurchasePrice;
+            this.repeatRetailer = repeatRetailer;
+            this.usedChip = usedChip;
+            this.usedPinNumber = usedPinNumber;
+            this.onlineOrder = onlineOrder;
+            this.fraud = "0";
+        }
+
+
+
         public string[,] GetStringValues()
         {
             return new string[,] { { distanceFromHome, distanceFromLastTransaction, ratioToMedianPurchasePrice, 

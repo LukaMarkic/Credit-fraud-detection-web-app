@@ -27,7 +27,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.MapGet("/api/home", (Func<string>)(() => "Home page"));
+
 app.MapGet("/api/fraud", ([FromQuery] string distanceFromHome, [FromQuery] string distanceFromLastTransaction, [FromQuery] string purchaseRatio, [FromQuery] string repeatRetailer, [FromQuery] string usedChip, [FromQuery] string usedPinNumber, [FromQuery] string onlineOrder) =>
 {
     TransactionInfo transaction = new TransactionInfo(distanceFromHome, distanceFromLastTransaction, purchaseRatio, repeatRetailer, usedChip, usedPinNumber, onlineOrder);

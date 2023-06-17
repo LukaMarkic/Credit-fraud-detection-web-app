@@ -27,7 +27,7 @@
 			<div>
 				<img src="~/images/unsucessful_payment_icon.png"/>
 				<div class="payment-outcome-content">
-					<h2>Neuspijela transakcija</h2>
+					<h2>Neuspjela transakcija</h2>
 					<p>Na žalost @Model.name nismo u stanju obraditi transakciju jer sumnjamo na prijevaru.</p>
 				</div>
 			</div>
@@ -172,7 +172,6 @@
 
 	$(function() {
 			navigator.geolocation.getCurrentPosition((position) => {
-				console.log(position.coords.latitude, position.coords.longitude)
 				document.getElementById("current-LatLng").value = `(${position.coords.latitude}, ${position.coords.longitude})`;
 			},
 				(err) => {
